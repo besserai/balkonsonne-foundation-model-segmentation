@@ -1,0 +1,20 @@
+{
+    "images": [
+        "image0.png",
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png",
+        "image5.png",
+        "image6.png"
+    ],
+    "viewDirections": [
+        "viewDirection0.json",
+        "viewDirection1.json",
+        "viewDirection2.json",
+        "viewDirection3.json",
+        "viewDirection4.json",
+        "viewDirection5.json",
+        "viewDirection6.json"
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "images": [
+        "image0.png",
+        "image1.png",
+        "image2.png",
+        "image3.png",
+        "image4.png",
+        "image5.png",
+        "image6.png",
+        "image7.png",
+        "image8.png",
+        "image9.png"
+    ],
+    "viewDirections": [
+        "viewDirection0.json",
+        "viewDirection1.json",
+        "viewDirection2.json",
+        "viewDirection3.json",
+        "viewDirection4.json",
+        "viewDirection5.json",
+        "viewDirection6.json",
+        "viewDirection7.json",
+        "viewDirection8.json",
+        "viewDirection9.json"
+    ],
+    "balconyAzimuth": 200,
+    "testMaskPath": "testMask.png",
+    "testPanoramaPath": "testPanorama.png",
+    "yearlyBalanceValues": {
+        "yearlyBalance": -1688.9169367371528,
+        "yearlyConsumption": 1991.7080077105509,
+        "yearlyFeedIn": 11.788019056381188,
+        "yearlyGridConsumption": -1700.704955793535,
+        "yearlySelfConsumption": 291.0030519170143,
+        "yearlyYield": 302.7910709733955
+    }
+}
