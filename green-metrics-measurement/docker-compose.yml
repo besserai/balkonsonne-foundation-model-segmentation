@@ -1,0 +1,17 @@
+services:
+  gcb-sam3-predictor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace/predict_only_without_app
+    command: ["bash", "-lc", "tail -f /dev/null"]
+    volumes:
+      - ../:/workspace/predict_only_without_app
+      # Mask any existing host-side sam3-bucket and keep model cache on the measurement machine.
+      - sam3-model-cache:/workspace/predict_only_without_app/sam3-bucket
+      # Keep venv in a Docker volume to avoid recreating on every scenario run.
+      - sam3-venv-cache:/workspace/predict_only_without_app/.venv
+
+volumes:
+  sam3-model-cache:
+  sam3-venv-cache:

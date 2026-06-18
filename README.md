@@ -29,6 +29,20 @@ Optional (skip model download):
   --output-dir output
 ```
 
+## Run one pipeline simulation
+
+This runs exactly one inference on:
+
+- `test_images/Alfred/Alfred-Kaestner-Sonne/testPanorama.png`
+
+and writes:
+
+- `output/Alfred/Alfred-Kaestner-Sonne/testPanorama_mask.png`
+
+```bash
+.venv/bin/python predict_single_pipeline_run.py
+```
+
 ## Output
 
 Masks are written as testPanorama_mask.png under mirrored folders in output.
@@ -41,3 +55,9 @@ Masks are written as testPanorama_mask.png under mirrored folders in output.
 ```bash
 SAM3_BUCKET_URI=hf://buckets/moritz-envite-1/sam3-bucket ./setup.sh
 ```
+
+## Green Metrics measurement setup
+
+A ready-to-run Green Metrics Tool setup is available in `green-metrics-measurement`.
+
+It uses a dedicated Docker volume mounted on `sam3-bucket`, so model artifacts are downloaded on the measurement machine and are not taken from local checked-in files.

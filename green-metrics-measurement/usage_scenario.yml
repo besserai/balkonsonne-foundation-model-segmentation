@@ -1,0 +1,43 @@
+name: Energy Measurement SAM3 Sky Mask Prediction
+author: envite Consulting GmbH <ruessmann|wittrowski|kepes@envite.de>
+description: Green Metrics usage_scenario for predict_only_without_app (SAM3 sky mask inference)
+
+compose-file: !include docker-compose.yml
+
+services:
+  gcb-sam3-predictor:
+    docker-run-args:
+      - --gpus=all
+
+flow:
+  - name: Setup environment and sync SAM3 model from HF bucket
+    container: gcb-sam3-predictor
+    commands:
+      - type: console
+        command: bash ./setup.sh
+        read-notes-stdout: true
+        log-stdout: true
+
+  - name: Clean previous single-run output
+    container: gcb-sam3-predictor
+    commands:
+      - type: console
+        command: rm -f output/Alfred/Alfred-Kaestner-Sonne/testPanorama_mask.png
+        read-notes-stdout: true
+        log-stdout: true
+
+  - name: Run single pipeline simulation (run 1)
+    container: gcb-sam3-predictor
+    commands:
+      - type: console
+        command: .venv/bin/python predict_single_pipeline_run.py
+        read-notes-stdout: true
+        log-stdout: true
+
+  - name: Run single pipeline simulation (run 2)
+    container: gcb-sam3-predictor
+    commands:
+      - type: console
+        command: .venv/bin/python predict_single_pipeline_run.py
+        read-notes-stdout: true
+        log-stdout: true
