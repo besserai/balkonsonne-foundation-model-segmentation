@@ -2,18 +2,7 @@ name: Energy Measurement SAM3 Sky Mask Prediction
 author: envite Consulting GmbH <ruessmann|wittrowski|kepes@envite.de>
 description: Green Metrics usage_scenario for predict_only_without_app (SAM3 sky mask inference)
 
-compose-file: |
-  services:
-    gcb-sam3-predictor:
-      build:
-        context: .
-        dockerfile: Dockerfile
-      command: ["bash", "-lc", "tail -f /dev/null"]
-      volumes:
-        - ../:/workspace/predict_only_without_app
-        - sam3-hf-cache:/root/.cache/huggingface
-  volumes:
-    sam3-hf-cache:
+compose-file: !include docker-compose.yml
 
 services:
   gcb-sam3-predictor:
