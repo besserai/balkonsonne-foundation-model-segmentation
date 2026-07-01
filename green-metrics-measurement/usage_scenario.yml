@@ -8,13 +8,14 @@ services:
   gcb-sam3-predictor:
     docker-run-args:
       - --gpus=all
+    folder-destination: /workspace/predict_only_without_app
 
 flow:
   - name: Warmup - download model and first inference
     container: gcb-sam3-predictor
     commands:
       - type: console
-        command: python predict_single_pipeline_run.py --model-dir facebook/sam3
+        command: python predict_single_pipeline_run.py --model-dir facebook/sam3 --output-image /tmp/testPanorama_mask.png
         read-notes-stdout: true
         log-stdout: true
 
@@ -22,7 +23,7 @@ flow:
     container: gcb-sam3-predictor
     commands:
       - type: console
-        command: rm -f output/Alfred/Alfred-Kaestner-Sonne/testPanorama_mask.png
+        command: rm -f /tmp/testPanorama_mask.png
         read-notes-stdout: true
         log-stdout: true
 
@@ -30,7 +31,7 @@ flow:
     container: gcb-sam3-predictor
     commands:
       - type: console
-        command: python predict_single_pipeline_run.py --model-dir facebook/sam3
+        command: python predict_single_pipeline_run.py --model-dir facebook/sam3 --output-image /tmp/testPanorama_mask.png
         read-notes-stdout: true
         log-stdout: true
 
@@ -38,6 +39,6 @@ flow:
     container: gcb-sam3-predictor
     commands:
       - type: console
-        command: python predict_single_pipeline_run.py --model-dir facebook/sam3
+        command: python predict_single_pipeline_run.py --model-dir facebook/sam3 --output-image /tmp/testPanorama_mask.png
         read-notes-stdout: true
         log-stdout: true

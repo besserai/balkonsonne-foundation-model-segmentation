@@ -4,5 +4,3 @@ services:
       context: .
       dockerfile: Dockerfile
     command: ["bash", "-lc", "tail -f /dev/null"]
-    volumes:
-      - ../:/workspace/predict_only_without_app
