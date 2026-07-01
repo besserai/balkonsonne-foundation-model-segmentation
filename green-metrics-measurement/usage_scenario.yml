@@ -10,7 +10,7 @@ services:
       - --gpus=all
 
 flow:
-  - name: Warmup – download model + first inference
+  - name: Warmup - download model and first inference
     container: gcb-sam3-predictor
     commands:
       - type: console
