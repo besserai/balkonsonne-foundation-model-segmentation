@@ -6,8 +6,10 @@ RUN apt-get update \
 
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir \
-        torch \
-        torchvision \
+        torch==2.4.0 \
+        torchvision==0.19.0 \
+        --index-url https://download.pytorch.org/whl/cu121 \
+    && pip install --no-cache-dir \
         transformers \
         pillow \
         numpy \

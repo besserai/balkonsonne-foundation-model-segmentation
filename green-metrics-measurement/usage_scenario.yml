@@ -11,19 +11,19 @@ services:
     folder-destination: /workspace/predict_only_without_app
 
 flow:
-  - name: Warmup - download model and first inference
-    container: gcb-sam3-predictor
-    commands:
-      - type: console
-        command: python predict_single_pipeline_run.py --model-dir facebook/sam3 --output-image /tmp/testPanorama_mask.png
-        read-notes-stdout: true
-        log-stdout: true
-
-  - name: Clean output before measurement runs
+  - name: Clean output
     container: gcb-sam3-predictor
     commands:
       - type: console
         command: rm -f /tmp/testPanorama_mask.png
+        read-notes-stdout: true
+        log-stdout: true
+
+  - name: Download model
+    container: gcb-sam3-predictor
+    commands:
+      - type: console
+        command: huggingface-cli download facebook/sam3
         read-notes-stdout: true
         log-stdout: true
 
