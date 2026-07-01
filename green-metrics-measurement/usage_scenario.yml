@@ -23,7 +23,7 @@ flow:
     container: gcb-sam3-predictor
     commands:
       - type: console
-        command: huggingface-cli download facebook/sam3
+        command: hf download facebook/sam3
         read-notes-stdout: true
         log-stdout: true
 
