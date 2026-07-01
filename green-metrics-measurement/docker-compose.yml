@@ -4,3 +4,5 @@ services:
       context: .
       dockerfile: Dockerfile
     command: ["bash", "-lc", "tail -f /dev/null"]
+    environment:
+      - HF_TOKEN=__GMT_VAR_HF_TOKEN__
