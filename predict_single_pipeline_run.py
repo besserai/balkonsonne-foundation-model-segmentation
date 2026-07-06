@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+from datetime import datetime
 from pathlib import Path
 
 import torch
@@ -39,9 +40,13 @@ def main() -> None:
         raise FileNotFoundError(f"Input image not found: {args.input_image}")
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
+
+    print(f"{int(datetime.now().timestamp() * 1000)} init started", flush=True)
     model = Sam3Model.from_pretrained(str(args.model_dir)).to(device)
     processor = Sam3Processor.from_pretrained(str(args.model_dir))
-
+    print(f"{int(datetime.now().timestamp() * 1000)} init done", flush=True)
+    
+    print(f"{int(datetime.now().timestamp() * 1000)} prediction started", flush=True)
     mask = predict_sky_mask(
         image_path=args.input_image,
         model=model,
@@ -52,6 +57,8 @@ def main() -> None:
         mask_threshold=args.mask_threshold,
         max_side=args.max_side,
     )
+    print(f"{int(datetime.now().timestamp() * 1000)} prediction done", flush=True)
+
     save_mask(mask, args.output_image)
     print(f"saved {args.output_image}", flush=True)
 
